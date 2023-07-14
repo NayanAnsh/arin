@@ -49,7 +49,7 @@ export default function Posts(){
     }else if (tag === "allposts" || tag  == ""){
             setHeadImage(allpostsImg);
             getAllPosts().then((posts)=>{
-                if(posts){
+                if(posts.length !=0){
                 setpostData(posts);
                 }else{
                     setpostData(["no_posts"]);

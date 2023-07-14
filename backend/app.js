@@ -41,9 +41,9 @@ io.on("connection",  socket=>{
  // console.log("Connected");
 
 })
-console.log(process.env);
+
 async function main(){
-  await mongoose.connect(`mongodb+srv://${process.env.mongoUserName}:${process.env.mongoUserPass}@cluster0.wnvoeyg.mongodb.net/arin?retryWrites=true&w=majority`);
+  await mongoose.connect(`mongodb+srv://nayanansh:${process.env.mongoUserPass}@cluster0.rft7ttq.mongodb.net/?retryWrites=true&w=majority`);
   console.log("DATABASE connected");
 }
 main().catch((err)=>{

@@ -17,7 +17,7 @@ const Root = () =>{
     
     return(
         <div className="flex flex-col min-h-screen">
-            {window.location.href == "http://localhost:3000/"? (<Navigate to="/allposts" />):""}
+            {window.location.href == process.env.BASEURL? (<Navigate to="/allposts" />):""}
         <div className="w-full ">
             <div >
                 <div className=" w-full flex relative flex-row bg-[#FFE3AA]">

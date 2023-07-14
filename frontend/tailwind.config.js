@@ -5,7 +5,12 @@ module.exports = {
   ],
   theme: {
     extend: {},
-  },
+  },purge: [
+    "./public/**/*.html",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./src/**/*.tsx",
+  ],
   plugins: [],
 }
 

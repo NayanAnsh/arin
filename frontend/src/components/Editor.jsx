@@ -24,7 +24,7 @@ export default function Editor( {setQbody}  ) {
     const [socket,setSocket] = useState();
     const [quil,setQuil] = useState();
     useEffect(()=>{
-      const s =  io("http://localhost:3001",{maxHttpBufferSize: 1e8})
+      const s =  io(process.env.REACT_APP_BASESOCKETURL,{maxHttpBufferSize: 1e8})
       setSocket(s);
       return ()=>{
         s.disconnect()

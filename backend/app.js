@@ -10,14 +10,16 @@ const port = process.env.PORT ||3002
 const io = require('socket.io')( process.env.PORTSOCKET ||3001,{
   maxHttpBufferSize: 1e8,
   cors:{
-    origin: 'http://localhost:3000',
+    origin: process.env.CLIENTURL,
     methods:['GET','POST']
   }
 })
 io.on("connection",  socket=>{
   socket.on("get-document", async documentId => {
+    console.log("SOCKET CONNECTION ESTABLISHED")
     const document = await findOrCreateDocument(documentId)
   //  socket.join(documentId)
+  
     socket.emit("load-document", document.data)
 
     socket.on("send-changes", delta => {

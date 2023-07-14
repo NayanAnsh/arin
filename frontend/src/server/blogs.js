@@ -1,8 +1,11 @@
 import axios from 'axios';
-const URI = 'http://localhost:3002/blogs/';
+//require("dotenv").config();
+//const URI = 'http://localhost:3002/blogs/';
+const URI = process.env.REACT_APP_BASEURL + "/blogs/";
 export async function  getAllPosts(){
 
     try{
+        console.log(URI);
         const res = await axios.get(URI);
         return res.data;
 

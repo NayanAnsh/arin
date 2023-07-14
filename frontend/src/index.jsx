@@ -3,7 +3,7 @@ import React, { Children, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import './preflightTailwind.css';
-import { createBrowserRouter , RouterProvider } from 'react-router-dom';
+import { createBrowserRouter , Navigate, RouterProvider } from 'react-router-dom';
 import Root from './components/Root';
 import NoStoryYet from './routes/NoStoryYet';
 
@@ -16,6 +16,11 @@ function Route(){
   const [Qbody, setQbody] = useState({body:"This is a sample blog", text:"This is text only"});
 
   const router = createBrowserRouter([
+    
+  {
+    path:"/",
+    element : <Navigate to="/allposts" replace= {true} />
+  },
     {
       path: "/",
       element : <Root/>,
@@ -42,7 +47,8 @@ function Route(){
       element:<Page/>
     }
   
-  ],}])
+  ],}
+])
   return <RouterProvider router= {router} />;
 }
 

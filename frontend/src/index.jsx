@@ -28,7 +28,7 @@ function Route(){
         
      }, 
     {
-      path:"/edit",
+      path:"/e/edit",
       
       element: <Text setQbody= {setQbody} />,
       action: async ({request})=>{

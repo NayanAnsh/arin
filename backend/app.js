@@ -6,8 +6,8 @@ require('dotenv').config()
 const Document = require('./models/document');
 const Blog = require("./models/blog"); 
 const app = express()
-const port = 3002
-const io = require('socket.io')(3001,{
+const port = process.env.PORT ||3002
+const io = require('socket.io')( process.env.PORTSOCKET ||3001,{
   maxHttpBufferSize: 1e8,
   cors:{
     origin: 'http://localhost:3000',

@@ -41,7 +41,7 @@ router.post('/delete/:id',async(req,res)=>{
 })
 //@desc find all blogs
 router.get('/', async (req,res)=>{
-    res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
+
     console.log("All post command received");
         const blogs = await Blog.find({})
         .sort({createAt:'desc'})

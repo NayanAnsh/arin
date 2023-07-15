@@ -31,8 +31,8 @@ export default function Page(){
         <Helmet>
             <title>{postsData.title}</title>
             <link rel='icon' href= {footer_img} />
-            <meta name='description' content={postsData.metaTags} />
-            <meta name="keywords" content={postsData.metaDes} />
+            <meta name='description' content={postsData.metaDes} />
+            <meta name="keywords" content={postsData.metaTags} />
         </Helmet>
         <div style={{backgroundImage:`url(${postsData.coverimage})`,overflow: 'hidden'}}  className=" page max-w-7xl p-5  relative mx-auto    " >
             <div className=" m-10 mx-auto  bg-white  rounded-xl p-2 max-w-5xl mt-24 sm:mt-52 md:mt-64       " >

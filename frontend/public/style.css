@@ -84,7 +84,14 @@ background: #64301e
     color: #000;
   font-size: 12px;
   }
-  
+  .pageblog a{
+    color: blue;
+    text-decoration: underline;
+    
+  }
+  .pageblog a:hover {
+    color: rgb(25, 25, 152);
+  }
   .container .ql-container.ql-snow {
     border: none;
     display: flex;
@@ -132,9 +139,9 @@ background: #64301e
   }
   @media   (max-width: 832px) {
     .pageblog .ql-editor {
-    padding: 0;
+    padding: 0.2in;
     margin: 0;
-    min-height: auto;
+    min-height: 11in;
     background-color: #FFF;
     }
     .pageblog h1{

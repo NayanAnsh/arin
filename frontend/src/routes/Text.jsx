@@ -40,7 +40,7 @@ const uploadImage = async (img)=>{
   return await cloudRes.data.url;
 }
 
-export async function add(qdata,request,setSubmit){
+export async function add(qdata,request){
   console.log(qdata)
   console.log(request)
   const formData = await request.formData();
@@ -77,7 +77,7 @@ export async function add(qdata,request,setSubmit){
   alert("Data uploaded");
   return redirect(`/${data.tag}`);
 }
-export default function Text({setQbody,isSubmited}){
+export default function Text({setQbody}){
 let data;
 //console.log(data);
 
@@ -155,8 +155,8 @@ const handlePermaLink = ((e)=>{
         
         </div>
         <div className="flex justify-end">
-          <button type="submit" disabled ={isSubmited}   className="px-4 py-2 bg-indigo-500 text-black rounded-md hover:bg-indigo-600 mr-2">Submit</button>
-          <button type="button" disabled={isSubmited} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
+          <button type="submit"   className="px-4 py-2 bg-indigo-500 text-black rounded-md hover:bg-indigo-600 mr-2">Submit</button>
+          <button type="button" className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
         </div>
       </Form>
     </div>

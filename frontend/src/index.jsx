@@ -35,11 +35,11 @@ function Route(){
     {
       path:"/e/edit",
       
-      element: <Text setQbody= {setQbody} setSubmit= {setSubmit} />,
+      element: <Text setQbody= {setQbody} />,
       action: async ({request})=>{
           console.log("Router");
           
-          return await add(Qbody,request,isSubmited)
+          return await add(Qbody,request)
       }   
     },
     {

@@ -18,6 +18,7 @@ router.post('/add',async(req,res)=>{
         console.log(req.body);
         if(!req.body.title){
             console.log("empty title");
+            res.send([]);
             return ;
         }
         await Blog.create(req.body);

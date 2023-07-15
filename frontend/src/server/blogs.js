@@ -73,8 +73,9 @@ export async function updatePost(id){
 }
 export async function addPost(data){
     try{
-        console.log(data);
+        console.log("In axios"+data);
         const res = await axios.post(`${URI}add`,data);
+        console.log("OUt of axios"+data);
         return res.data;
 
     }catch(err){

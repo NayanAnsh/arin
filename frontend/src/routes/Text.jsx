@@ -40,14 +40,28 @@ const uploadImage = async (img)=>{
   return await cloudRes.data.url;
 }
 
-export async function add(qdata,request){
+export async function add(qdata,request,setSubmit){
   console.log(qdata)
   console.log(request)
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
+  console.log(cardImage);
+  console.log(coverImage);
+  
+  alert("press ok to confirm");
+  
+  if(cardImage === undefined && coverImage === undefined ){
+    console.log("No cover or card image found");
+    alert("No cover or card image found");
+    return redirect("/e/edit");
+  }
+ 
+  console.log("uploading images");
   const cardURL  = await uploadImage(cardImage);
   const coverURL  = await uploadImage(coverImage);
   
+  
+  console.log("uploading blog");
   await addPost({tag:data.tag ,
                 title:data.title ,
                 body: qdata.body,
@@ -58,14 +72,15 @@ export async function add(qdata,request){
                 metaDes:data.metaDes,
                 nameLink:data.permaLink
               });
- 
-  console.log("Post added");
-
+  
+  console.log(`/${data.tag}`);
+  alert("Data uploaded");
   return redirect(`/${data.tag}`);
 }
-export default function Text({setQbody}){
+export default function Text({setQbody,isSubmited}){
 let data;
 //console.log(data);
+
 const [metaTags,setmetaTags] = useState([]);
 const [desWordCount,setDesWordCount] = useState([]);
 const handlemetaTags = (e)=>{
@@ -140,8 +155,8 @@ const handlePermaLink = ((e)=>{
         
         </div>
         <div className="flex justify-end">
-          <button type="submit" className="px-4 py-2 bg-[#464FE5] text-black rounded-md hover:bg-indigo-600 mr-2">Submit</button>
-          <button type="button" className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
+          <button type="submit" disabled ={isSubmited}   className="px-4 py-2 bg-indigo-500 text-black rounded-md hover:bg-indigo-600 mr-2">Submit</button>
+          <button type="button" disabled={isSubmited} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400">Cancel</button>
         </div>
       </Form>
     </div>

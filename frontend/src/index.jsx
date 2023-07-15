@@ -14,7 +14,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 function Route(){
   const [Qbody, setQbody] = useState({body:"This is a sample blog", text:"This is text only"});
-
+  const [isSubmited,setSubmit] = useState(false);
   const router = createBrowserRouter([
     
   {
@@ -35,11 +35,11 @@ function Route(){
     {
       path:"/e/edit",
       
-      element: <Text setQbody= {setQbody} />,
+      element: <Text setQbody= {setQbody} setSubmit= {setSubmit} />,
       action: async ({request})=>{
           console.log("Router");
           
-          return await add(Qbody,request)
+          return await add(Qbody,request,isSubmited)
       }   
     },
     {

@@ -72,7 +72,7 @@ export default function Posts(){
         </Helmet>
             
        
-            <img className='md:px-20  h-[300px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' src={headImage} alt="Working" />
+            <img className='md:px-20  h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' src={headImage} alt="Working" />
             <div className={postsData[0] != "no_posts"? " grid grid-cols-2   sm:grid-cols-3 lg:grid-cols-4 m-2   sm:gap-4": "flex"} >
 
             { postsData.length != 0 && postsData[0] != "no_posts" ? ( postsData.map((post)=> {

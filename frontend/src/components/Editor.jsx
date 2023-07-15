@@ -24,6 +24,7 @@ export default function Editor( {setQbody}  ) {
     const [socket,setSocket] = useState();
     const [quil,setQuil] = useState();
     useEffect(()=>{
+      //https://arinserver.onrender.com/ process.env.REACT_APP_BASESOCKETURL
       const s =  io(process.env.REACT_APP_BASESOCKETURL,{maxHttpBufferSize: 1e8})
       setSocket(s);
       return ()=>{
@@ -110,6 +111,6 @@ export default function Editor( {setQbody}  ) {
     },[socket,quil])
     
   return (
-    <div className='container' ref={wrapperRef} >Editor</div>
+    <div className=' pageblog container  ' ref={wrapperRef} >Editor</div>
   )
 }

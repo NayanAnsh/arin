@@ -34,9 +34,9 @@ const Root = () =>{
             
             <nav className=" w-full hidden sm:flex  bg-white  justify-between pl-20">
                 <ul className="flex my-4" >
-                <li className="font-serif font-bold uppercase nav_items  " >
+                <li className="font-serif  font-bold uppercase nav_items  " >
                     <NavLink to={`/allposts`} className={({isActive,isPending})=>
-                        isActive? "active": ""
+                        (isActive? "active": "") + " no-underline"
                     }>
                     All post
                     </NavLink> 

@@ -2,7 +2,7 @@ import Posts from './routes/posts';
 import React, { Children, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import './preflightTailwind.css';
+
 import { createBrowserRouter , Navigate, RouterProvider } from 'react-router-dom';
 import Root from './components/Root';
 import NoStoryYet from './routes/NoStoryYet';

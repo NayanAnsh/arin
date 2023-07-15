@@ -37,12 +37,52 @@ background: #64301e
 }
   
   .container .ql-editor {
-    width: 8.5in;
+    width: 1080px;
     min-height: 11in;
     padding: 1in;
     margin: 1rem;
     box-shadow: 0 0 5px 0 rgba(0, 0, 0, .5);
     background-color: white;
+  }
+  .pageblog img{
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+
+.pageblog .ql-editor {
+    
+  min-height: 11in;
+  padding: 1in;
+  margin: 1rem;
+  box-shadow: 0 0px 1px 0 rgba(0, 0, 0, .5);
+  background-color: white;
+  
+}
+
+  .pageblog h1{
+    color: #000;
+    font-size: 36px;
+  }
+  .pageblog h2{
+    color: #000;
+  font-size: 30px;
+  }
+  .pageblog h3{
+    color: #000;
+  font-size: 24px;
+  }
+  .pageblog h4{
+    color: #000;
+  font-size: 20px;
+  }
+  .pageblog h5{
+    color: #000;
+  font-size: 18px;
+  }
+  .pageblog h6{
+    color: #000;
+  font-size: 12px;
   }
   
   .container .ql-container.ql-snow {
@@ -88,5 +128,36 @@ background: #64301e
   
     .container .ql-toolbar.ql-snow {
       display: none;
+    }
+  }
+  @media   (max-width: 832px) {
+    .pageblog .ql-editor {
+    padding: 0;
+    margin: 0;
+    min-height: auto;
+    background-color: #FFF;
+    }
+    .pageblog h1{
+      font-size:28px;
+    }
+    .pageblog h2{
+      color: #000;
+    font-size: 24px;
+    }
+    .pageblog h3{
+      color: #000;
+    font-size: 20px;
+    }
+    .pageblog h4{
+      color: #000;
+    font-size: 16px;
+    }
+    .pageblog h5{
+      color: #000;
+    font-size: 12px;
+    }
+    .pageblog h6{
+      color: #000;
+    font-size: 8px;
     }
   }

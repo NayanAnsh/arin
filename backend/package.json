@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon app.js",
-    "build" : "node app.js"
+    "build" : "node app.js",
+    "build-socket-io":"node appSocket.js"
   },
   "author": "",
   "license": "ISC",

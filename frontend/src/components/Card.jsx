@@ -24,17 +24,18 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
         imgurl = url + parameters+ name;
        
     }
+    //aspect-[1.33]
     return (
     
     
 <div className="md:max-w-xs max-w-[200px] m-4 sm:m-8 drop-shadow-[5px_5px_3.5px_rgba(0,0,0,0.15)] bg-white  border-[#FFE3AA] rounded-[20px] border-2 border-solid  " >
     <NavLink to= { nameLink  ? `/page/${nameLink}/${id}` :`/page/blog/${id}`}>
     <div className="p-1" >
-        <img className="rounded-[20px]  aspect-[1.33]  w-full " src={imageSrc} alt=" No image" />
+        <img className="rounded-[20px]  aspect-[1]  w-full " src={imageSrc} alt=" No image" />
     </div>
     <div className=" p-2 sm:p-5">
         
-            <h5 className=" mb-2  md:text-lg  text-base font-semibold tracking-tight text-[#404040] ">{title}</h5>
+            <h5 className=" mb-2  md:text-lg   text-base font-semibold tracking-tight text-[#404040] ">{title}</h5>
         
         <p className="mb-3 font-thin md:text-base text-sm  text-gray-700 dark:text-gray-400">{tbody}</p>
         <p  className="inline-flex p-2 px-2  sm:w-auto sm:h-auto items-center sm:px-3 sm:py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

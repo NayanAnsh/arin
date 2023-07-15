@@ -5,7 +5,8 @@ module.exports = {
   ],
   theme: {
     extend: {},
-  },purge: [
+  },
+  purge: [
     "./public/**/*.html",
     "./src/**/*.js",
     "./src/**/*.jsx",

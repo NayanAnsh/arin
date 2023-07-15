@@ -17,7 +17,7 @@ import Quill from "quill";
 
     })
     return (
-        <div  ref={wrapperRef} className=" mx-0 sm:mx-4  no-tailwind  rounded-sm "  >Editor</div>
+        <div  ref={wrapperRef} className=" p-10 sm:mx-4  no-tailwind pageblog rounded-sm "  >Editor</div>
       )
 }
 //shadow-black shadow-sm

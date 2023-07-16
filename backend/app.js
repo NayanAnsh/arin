@@ -66,3 +66,4 @@ app.get('/', (req, res) => {
 //   return await Document.create({_id:id,data:" "});
 // } 
 app.listen(port)
+module.exports = app;

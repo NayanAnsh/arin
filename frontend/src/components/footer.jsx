@@ -8,7 +8,7 @@ import footer_img from './resources/footer_logo.png'
 const Footer = () => {
   return (
    
-    <div className='footer  mt-auto   bottom-0 flex flex-row sm:grid sm:grid-flow-col  sm:justify-between  w-full  '>
+    <div className='footer  mt-auto    bottom-0 flex flex-row sm:grid sm:grid-flow-col  sm:justify-between  w-full  '>
         <div className="  sm:border-r-2 border-white border-opacity-50  " >
         <img src={footer_img} className=' mx-auto my-auto h-36 sm:h-32 p-3   ' alt="" />
         </div>

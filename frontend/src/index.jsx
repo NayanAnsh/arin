@@ -1,4 +1,4 @@
-import Posts from './routes/posts';
+import Posts, { loader as postLoader } from './routes/posts';
 import React, { Children, useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
@@ -8,7 +8,7 @@ import Root from './components/Root';
 import NoStoryYet from './routes/NoStoryYet';
 
 import Text,{add} from './routes/Text';
-import Page from './routes/page';
+import Page, { loader as pageLoader } from './routes/page';
 import { HelmetProvider } from "react-helmet-async";
 
 
@@ -29,7 +29,8 @@ function Route(){
       
      {
       path:":tag",
-      element:<Posts/>
+      element:<Posts/>,
+      loader:postLoader
         
      }, 
     {
@@ -44,7 +45,8 @@ function Route(){
     },
     {
       path:"/page/:name/:id",
-      element:<Page/>
+      element:<Page/>,
+      loader: pageLoader
     }
   
   ],}

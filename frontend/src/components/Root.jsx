@@ -3,9 +3,12 @@ import {FiSearch} from 'react-icons/fi'
 import { AiOutlineClose,AiOutlineMenu } from 'react-icons/ai'
 import Footer from './footer';
 import { NavLink, Navigate, Outlet, redirect, useNavigation,useParams } from 'react-router-dom';
+import SpinningLoader from './SpinningLoader';
+import LoadingScreen from './LoadingScreen';
 
 
 const Root = () =>{
+    const navigation = useNavigation();
     const [menu,setmenu] = useState(false);
     const handlePhoneMenu = (e)=>{
             console.log(e);
@@ -13,7 +16,7 @@ const Root = () =>{
     } 
     const menuCSSClass = "font-serif font-bold uppercase  nav_items";
     const p =   useParams();
-    
+    //{navigation.state === "loading" ? "loading":""}
     console.log()
     return(
         <div className="flex flex-col min-h-screen">
@@ -95,8 +98,16 @@ const Root = () =>{
 
 </div>
         
-<Outlet/>
+        <div className=  {navigation.state === "loading" ? "  opacity-25 transition-opacity delay-200":"relative h-[100vh]"} >
+        <div className={navigation.state === "loading" ?'absolute z-10 top-1/2 left-1/2 ':"hidden"} >
+                <SpinningLoader/>
+            </div>
+            
+            
 
+            <Outlet/>
+            
+        </div>  
         <div onClick={handlePhoneMenu} className={menu ?"fixed h-full left-0 bg-white top-0 w-[50%] md:w-[30%] border-r border-r-gray-900 ease-in-out duration-500 ":"fixed ease-in-out -left-full  duration-500 "}>
             <h1 className=' text-3xl font-fold border-b-2 border-black py-2  my-4 text-center' >AARIN</h1>
 

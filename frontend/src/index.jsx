@@ -32,7 +32,7 @@ function Route(){
         loader:postLoader
       },
      {
-      path:":tag",
+      path:"/home/:tag",
       element:<Posts/>,
       loader:postLoader
         

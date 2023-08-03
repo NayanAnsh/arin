@@ -47,7 +47,7 @@ const Root = () =>{
                     </li>
                 <li className="font-serif font-bold uppercase nav_items" >
                     
-                    <NavLink to={`/lifestyle`} className={({isActive,isPending})=>
+                    <NavLink to={`/home/lifestyle`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     lifestyle
@@ -56,7 +56,7 @@ const Root = () =>{
                     
                     </li>
                 <li className="font-serif font-bold uppercase nav_items" >
-                <NavLink to={`/travel`} className={({isActive,isPending})=>
+                <NavLink to={`/home/travel`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     travel
@@ -64,28 +64,28 @@ const Root = () =>{
                     
                     </li>
                 <li className="font-serif font-bold uppercase nav_items" >
-                <NavLink to={`/beauty`} className={({isActive,isPending})=>
+                <NavLink to={`/home/beauty`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     beauty
                     </NavLink>
                     </li>
                 <li className="font-serif font-bold uppercase nav_items" >
-                <NavLink to={`/foods`} className={({isActive,isPending})=>
+                <NavLink to={`/home/foods`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     food
                     </NavLink>
                     </li>
                 <li className={"font-serif font-bold uppercase nav_items"} >
-                <NavLink to={`/books`} className={({isActive,isPending})=>
+                <NavLink to={`/home/books`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     books
                     </NavLink>
                     </li>
                 <li className="font-serif font-bold uppercase nav_items" >
-                <NavLink to={`/fashion`} className={({isActive,isPending})=>
+                <NavLink to={`/home/fashion`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     fashion

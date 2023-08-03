@@ -18,7 +18,7 @@ import NoStoryYet from "./NoStoryYet";
 export async function loader({params}){
             
             const {tag} = params;
-            
+            console.log("post loader running-" + tag);
             let postsData; 
             if(tag !== "allposts"){
                 const posts = await getPostswithTag(tag)

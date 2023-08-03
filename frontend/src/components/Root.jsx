@@ -98,7 +98,7 @@ const Root = () =>{
 
     </div>
         
-        <div className=  {navigation.state === "loading" ? "  relative opacity-25 transition-opacity delay-200 h-[100vh] ":" "} >
+        <div className=  {navigation.state === "loading" ? "  relative opacity-25 transition-opacity delay-200 ":" "} >
             <div className={navigation.state === "loading" ?'absolute z-10 top-1/2 left-1/2 ':"hidden"} >
                 <SpinningLoader/>
             </div>

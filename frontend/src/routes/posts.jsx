@@ -20,7 +20,7 @@ export async function loader({params}){
             const {tag} = params;
             console.log("post loader running-" + tag);
             let postsData; 
-            if(tag !== "allposts"){
+            if( tag && tag !== "allposts"){
                 const posts = await getPostswithTag(tag)
                 if(posts.length !==0 ){
                     postsData = posts;
@@ -30,7 +30,8 @@ export async function loader({params}){
                 }
         
             
-        }else if (tag === "allposts" || tag ===""){
+        }else {
+            console.log("post loader runndsfging-" + tag);
                 const posts  =await  getAllPosts()
                 
                     if(posts.length !==0){
@@ -113,7 +114,7 @@ export default function Posts(){
             setHeadImage(fashionImg);
         }else if(tag==="travel"){
             setHeadImage(travelImg);
-        }else if(tag==="allposts"){
+        }else{
             setHeadImage(allpostsImg);
         }
     },[tag])

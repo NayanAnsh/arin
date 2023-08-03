@@ -10,23 +10,27 @@ import NoStoryYet from './routes/NoStoryYet';
 import Text,{add} from './routes/Text';
 import Page, { loader as pageLoader } from './routes/page';
 import { HelmetProvider } from "react-helmet-async";
-
-
+// // {
+//   path:"/",
+//   element :
+// },
+// <Navigate to="/allposts" replace= {true} />
 function Route(){
   const [Qbody, setQbody] = useState({body:"This is a sample blog", text:"This is text only"});
   const [isSubmited,setSubmit] = useState(false);
   const router = createBrowserRouter([
     
-  {
-    path:"/",
-    element : <Navigate to="/allposts" replace= {true} />
-  },
+ 
     {
       path: "/",
       element : <Root/>,
       errorElement:<NoStoryYet/>,
      children:[
-      
+      {
+        path:"/",
+        element:<Posts/>,
+        loader:postLoader
+      },
      {
       path:":tag",
       element:<Posts/>,

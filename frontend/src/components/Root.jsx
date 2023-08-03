@@ -114,7 +114,7 @@ const Root = () =>{
 
             <ul className="flex flex-col ml-4  space-y-4 divide-black my-4" >
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                    <NavLink to={`/allposts`} className={({isActive,isPending})=>
+                    <NavLink to={`/`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     All post
@@ -123,7 +123,7 @@ const Root = () =>{
                 </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
                     
-                    <NavLink to={`/lifestyle`} className={({isActive,isPending})=>
+                    <NavLink to={`/home/lifestyle`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     lifestyle
@@ -132,7 +132,7 @@ const Root = () =>{
                     
                     </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                <NavLink to={`/travel`} className={({isActive,isPending})=>
+                <NavLink to={`/home/travel`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     travel
@@ -140,28 +140,28 @@ const Root = () =>{
                     
                     </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                <NavLink to={`/beauty`} className={({isActive,isPending})=>
+                <NavLink to={`/home/beauty`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     beauty
                     </NavLink>
                     </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                <NavLink to={`/foods`} className={({isActive,isPending})=>
+                <NavLink to={`/home/foods`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     food
                     </NavLink>
                     </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                <NavLink to={`/books`} className={({isActive,isPending})=>
+                <NavLink to={`/home/books`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     books
                     </NavLink>
                     </li>
                 <li className="font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items" >
-                <NavLink to={`/fashion`} className={({isActive,isPending})=>
+                <NavLink to={`/home/fashion`} className={({isActive,isPending})=>
                         isActive? "active": ""
                     }>
                     fashion

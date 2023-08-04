@@ -129,7 +129,8 @@ export default function Posts(){
         
         <div  >
             <Helmet>
-            <title>{"AARIN " + tag  }</title>
+            
+            <title>{"AARIN " + (tag ? tag :"") }</title>
             <link rel='icon' href= {footer_img} />
             <meta name='description' content='A blog website about fashion lifestyle beauty food books fashion ' />
             <meta name="keywords" content="lifestyle,travel,beauty,food,books,fashion" />

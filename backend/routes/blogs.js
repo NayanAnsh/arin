@@ -29,6 +29,7 @@ router.post('/add',async(req,res)=>{
         res.send([]);
     }
 })
+
 //@desc delete using id
 router.post('/delete/:id',async(req,res)=>{
     console.log("HERE");
@@ -46,12 +47,23 @@ router.get('/', async (req,res)=>{
     console.log("All post command received");
         const blogs = await Blog.find({})
         .select("_id title text tag nameLink cardimage")
-        .sort({createAt:'desc'})
+        .sort('-createdAt')
 
         .lean();
         json =  JSON.stringify(blogs);
         res.send(json)
 
+
+})
+//@desc get all paths 
+router.get('/paths', async (req,res)=>{
+    console.log("Recieved all  paths request");
+    const paths = await Blog.find({})
+    .select("_id nameLink")
+    .sort('-createdAt')
+    .lean();
+    json = JSON.stringify(paths);
+    res.send(json);
 
 })
 //@desc find blogs with specific tags
@@ -61,7 +73,7 @@ router.get('/posts/:tag',async(req,res)=>{
     const blogs = await Blog.find({tag:req.params.tag})
         .select("_id title text tag nameLink cardimage")
         
-        .sort({createAt:'desc'})
+        .sort('-createdAt')
         .lean();
         json =  JSON.stringify(blogs);
     

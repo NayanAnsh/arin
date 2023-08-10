@@ -4,7 +4,7 @@ import Head from "next/head";
 const QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
 import { getAllPaths, getPostswithid } from "../../../server/blogs";
-import Root from "../../../components/root";
+import Root from "../../../components/Root";
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");

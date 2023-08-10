@@ -17,7 +17,7 @@ import Card from "../components/Card";
 import LoadingScreen from "../components/LoadingScreen"
 import NoStoryYet from "../components/NoStoryYet";
 import Image from "next/image";
-import Root from "../components/root";
+import Root from "../components/Root";
 export async function getServerSideProps(){
             
       

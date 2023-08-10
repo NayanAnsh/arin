@@ -2,7 +2,7 @@
 
 import { useEffect,useState } from "react";
 
-import Root from "../../components/root";
+import Root from "../../components/Root";
 import Head from "next/head";
 import Image from "next/image";
 import NoStoryYet from "../../components/NoStoryYet";

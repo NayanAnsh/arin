@@ -12,7 +12,7 @@ import { useCallback, useState } from 'react';
 import { redirect } from 'next/navigation';
 import { addPost } from '../../server/blogs';
 import { useRouter } from 'next/navigation';
-import Root from "../../components/root";
+import Root from "../../components/Root";
 
 
 /*

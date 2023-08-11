@@ -14,6 +14,7 @@ import { getAllPosts, getPostswithTag } from "../../server/blogs";
 export async function getServerSideProps({params}){
             
             const {tag} = params;
+           
             console.log("post loader running-" + tag);
             let postsData; 
             if( tag && tag !== "allposts"){
@@ -132,7 +133,7 @@ export default function Posts({postsData,headImage}){
         <div  >
             <Head>
             
-            <title>{"AARIN "+ tag  }</title>
+            <title>{"AARIN "  }</title>
             <link rel='icon' href= "/assets/footer_logo.png" />
             <meta name='description' content='A blog website about fashion lifestyle beauty food books fashion ' />
             <meta name="keywords" content="lifestyle,travel,beauty,food,books,fashion" />

@@ -58,7 +58,22 @@ export default function Page({postsData}){
     
     //const postsData = null;
     
-    
+
+    function getPosition(string, subString, index) {
+      return string.split(subString, index).join(subString).length;
+    }
+    function getImageCLoudinary(imageSrc){
+
+        if(imageSrc ){
+          const pos = getPosition(imageSrc,"/",6)
+          const url = imageSrc.substring(0,pos);
+          const name = imageSrc.substring(pos);
+          const parameters = "/b_auto,c_fill_pad,g_auto,h_600,w_1067"
+          const imgurl = url + parameters+ name;
+          return imgurl 
+        }
+  }
+    //style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}} 
     return (
     <Root>
     <div>
@@ -69,7 +84,10 @@ export default function Page({postsData}){
             <meta name="keywords" content={postsData?.metaTags} />
         </Head>
         
-        <div style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}}  className=" page max-w-7xl p-5  relative mx-auto    " >
+        <div  className=" page  p-5   relative mx-auto    " >
+        <div className="absolute lg:right-20 lg:left-20 md:right-10 md:left-10 right-0 left-0  top-5 content-center   -z-10 " >
+          <img src={`${getImageCLoudinary(postsData?.coverimage)} `} className="w-full max-h-[600px]   " />
+        </div>
         <div className=" m-10 mx-auto  bg-white  rounded-xl p-2 max-w-5xl mt-24 sm:mt-52 md:mt-64       " >
 
             <h1 className=" lg:text-7xl mt-4   text-4xl w-fit mx-auto lg:px-11 px-5   ">{postsData?.title}</h1>

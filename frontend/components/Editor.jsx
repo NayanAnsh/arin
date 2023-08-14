@@ -9,7 +9,7 @@ Quill.register('modules/imageResize', ImageResize);
 const SAVE_INTERVAL_MS = 5000
 export const documentId = "646ce77d591e3ecb93100f0a"
 const TOOLBAR_OPTIONS = [
-    [{ header: [1, 2, 3, 4, 5, 6, false] }],
+    [{ header: [ 2, 3, 4, 5] }],
     [{ font: [] }],
     [{ list: "ordered" }, { list: "bullet" }],
     ["bold", "italic", "underline"],

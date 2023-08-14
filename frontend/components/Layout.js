@@ -4,6 +4,7 @@ import Script from "next/script";
 
 export default function layout({children}){
     return(
+        
         <div>
         <Head>
                         
@@ -18,7 +19,7 @@ export default function layout({children}){
 
                 <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
-                <title>React App</title>
+                
                 <link rel="stylesheet" href="/style.css"/>
                 <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css"/>
   
@@ -38,7 +39,7 @@ export default function layout({children}){
         
         <main>{children}</main>
         </div>
-
+       
     )
 
 }

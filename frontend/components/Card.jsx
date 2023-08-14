@@ -38,7 +38,7 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
     </div>
     <div className=" p-2 sm:p-5">
         
-            <h5 className=" mb-2  md:text-lg   text-base font-semibold tracking-tight text-[#404040] ">{title}</h5>
+            <h2 className=" mb-2  md:text-lg   text-base font-semibold tracking-tight text-[#404040] ">{title}</h2>
         
         <p className="mb-3 font-thin md:text-base text-sm  text-gray-700 dark:text-gray-400">{tbody}</p>
         <p  className="inline-flex p-2 px-2  sm:w-auto sm:h-auto items-center sm:px-3 sm:py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">

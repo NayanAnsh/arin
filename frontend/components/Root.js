@@ -30,17 +30,17 @@ const Root = ({children,params}) =>{
         <Layout>
             <div className="flex flex-col min-h-screen">
                 <div className="w-full ">
-                        <div >
+                        <header >
                             <div className=" w-full flex relative flex-row bg-[#FFE3AA]">
                                 <div onClick={handlePhoneMenu} className='block absolute top-1/4 right-4 sm:hidden'>
                                 { menu ?  <AiOutlineClose size={25} /> :<AiOutlineMenu size={25}/> }
 
                                 </div>
-                            <p  className="mx-auto  w-fit text-2xl sm:text-4xl py-3 sm:py-5 font-bold  ">
+                            <Link href={`/`} className="mx-auto  w-fit text-2xl sm:text-4xl py-3 sm:py-5 font-bold  ">
                                 AARIN
-                            </p>
+                            </Link>
                             </div>
-                        </div>
+                        </header>
                         
                         
                         
@@ -97,8 +97,8 @@ const Root = ({children,params}) =>{
                         <main>{children}</main>
                     </div>  
                     
-                    <div onClick={handlePhoneMenu} className={menu ?"fixed h-full left-0 bg-white top-0 w-[50%] md:w-[30%] border-r border-r-gray-900 ease-in-out duration-500 ":"fixed ease-in-out -left-full  duration-500 "}>
-                        <h1 className=' text-3xl font-fold border-b-2 border-black py-2  my-4 text-center' >AARIN</h1>
+                    <div onClick={handlePhoneMenu} className={menu ?"fixed h-full   left-0 bg-white top-0 w-[50%] md:w-[30%] border-r border-r-gray-900 ease-in-out duration-500 ":"fixed ease-in-out -left-full  duration-500 "}>
+                        <Link href={`/`}  className=' text-3xl font-fold border-b-2 border-black py-2  my-4 text-center' >AARIN</Link>
 
                         <ul className="flex flex-col ml-4  space-y-4 divide-black my-4" >
                             <li className={(router.pathname == "/" ? "active" : "")+"  font-serif font-bold uppercase  border-slate-400 border-spacing-2 border-b-2 p-2 nav_items"} >
@@ -143,8 +143,9 @@ const Root = ({children,params}) =>{
                                 </li>
                             </ul>
                     </div>
-                    
-                    <Footer/>
+                    <footer>
+                        <Footer/>
+                    </footer>
             </div>
         </Layout>    
     )

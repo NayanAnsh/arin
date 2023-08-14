@@ -118,8 +118,9 @@ background: #64301e
   }
   .pageblog h4{
     color: #000;
-  font-size: 20px !important;
+  font-size: medium !important;
   }
+  #20px
   .pageblog h5{
     color: #000;
   font-size: larger !important ;
@@ -204,7 +205,7 @@ background: #64301e
     }
     .pageblog h4{
       color: #000;
-    font-size: 16px !important;
+    font-size: medium !important;
     }
     .pageblog h5{
       color: #000;

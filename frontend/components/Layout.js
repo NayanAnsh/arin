@@ -34,7 +34,7 @@ export default function layout({children}){
                 `
                 }
         </Script>
-        <Script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.20.2/ckeditor.js" integrity="sha512-abfAV2gASfr4b8JYZfgEO6rByKHbXqfHIIQ2QWI/Z8L2XB3MVZhlY8Oy52C6mZbugZBPnzAz7c7RLlYwZT5DBA==" crossorigin="anonymous" referrerpolicy="no-referrer"></Script>
+        
         <Script src="//cdn.quilljs.com/1.2.2/quill.min.js"></Script>  
         
         <main>{children}</main>

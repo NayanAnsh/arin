@@ -41,7 +41,7 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
 <div className="md:max-w-xs max-w-[200px] m-4 sm:m-8 drop-shadow-[5px_5px_3.5px_rgba(0,0,0,0.15)] bg-white  border-[#FFE3AA] rounded-[20px] border-2 border-solid  " >
     <Link href={ nameLink  ? `/page/${nameLink}/${id}` :`/page/blog/${id}`}>
     <div className="p-1" >
-    <Image height={300} width={300} src={"none"} loader={getOptimizedImageUrl} className="rounded-[20px]   w-10/12 my-2 sm:my-0 mx-auto  sm:w-full "  alt=" No image" />
+    <Image width={300} height={300} sizes="(max-width: 768px) 15vw, (max-width: 1200px) 10vw, 10vw" src={"none"} loader={getOptimizedImageUrl} className="rounded-[20px]   w-10/12 my-2 sm:my-0 mx-auto  sm:w-full "  alt=" No image" />
 
     </div>
     <div className=" p-2 sm:p-5">

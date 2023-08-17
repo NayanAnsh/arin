@@ -50,7 +50,12 @@ router.get('/', async (req,res)=>{
         .sort('-createdAt')
 
         .lean();
+        blogs.map((blog)=>{
+            console.log(blog.text)
+        })
+        console.log(blogs)
         json =  JSON.stringify(blogs);
+        
         res.send(json)
 
 
@@ -100,6 +105,7 @@ router.get('/posts/id/:id',async (req,res)=>{
 //@desc update
 router.post('/update/:id', async (req,res)=>{
     const updateStatus = await Blog.updateOne({_id:req.params.id},req.body);
+    
     res.send(` query updated - ${updateStatus.matchedCount} with message ${updateStatus.acknowledged}`);
 })
 module.exports = router;

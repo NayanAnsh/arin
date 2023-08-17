@@ -22,11 +22,18 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
         const pos = getPosition(imageSrc,"/",6)
         const url = imageSrc.substring(0,pos);
         const name = imageSrc.substring(pos);
-        const parameters = "/b_auto,c_fill_pad,g_auto,h_500,w_665"
+        const parameters = "/b_auto,c_fill_pad,g_auto,h_300,w_300"
         imgurl = url + parameters+ name;
        
     }
-    
+    const getOptimizedImageUrl = ({src,width,quality})=>{
+        const pos = getPosition(imageSrc,"/",6)
+        const url = imageSrc.substring(0,pos);
+        const name = imageSrc.substring(pos);
+        const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75}`
+        return (url + parameters+ name);
+    }
+    //loader={()=>imgurl}
     //aspect-[1.33]
     return (
     
@@ -34,7 +41,8 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
 <div className="md:max-w-xs max-w-[200px] m-4 sm:m-8 drop-shadow-[5px_5px_3.5px_rgba(0,0,0,0.15)] bg-white  border-[#FFE3AA] rounded-[20px] border-2 border-solid  " >
     <Link href={ nameLink  ? `/page/${nameLink}/${id}` :`/page/blog/${id}`}>
     <div className="p-1" >
-        <img height={500} width={500} loader={()=>imageSrc} className="rounded-[20px]  aspect-[1] w-10/12 my-2 sm:my-0 mx-auto  sm:w-full " src={imageSrc} alt=" No image" />
+    <Image height={300} width={300} src={"none"} loader={getOptimizedImageUrl} className="rounded-[20px]   w-10/12 my-2 sm:my-0 mx-auto  sm:w-full "  alt=" No image" />
+
     </div>
     <div className=" p-2 sm:p-5">
         

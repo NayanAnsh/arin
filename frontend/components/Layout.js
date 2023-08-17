@@ -20,7 +20,6 @@ export default function layout({children}){
                 <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
 
                 
-                <link rel="stylesheet" href="/style.css"/>
                 <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css"/>
   
         </Head>

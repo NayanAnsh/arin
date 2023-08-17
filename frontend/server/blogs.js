@@ -56,6 +56,23 @@ export async function  getPostswithid(id){
     
 
 }
+
+
+export async function  getPostswithnameLink(id){
+
+    try{
+        
+        const res = await axios.get(`${URI}posts/namelink/${id}`);
+        return res.data;
+
+    }catch(err){
+        console.log("error from get getPostswithnameLink " + err)
+        return [];
+
+    }
+    
+
+}
 export async function deletePost(id){
     try{
         

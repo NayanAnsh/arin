@@ -3,8 +3,9 @@
 import Head from "next/head";
 const QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
-import { getAllPaths, getPostswithid } from "../../../server/blogs";
+import { getAllPaths, getPostswithid, getPostswithnameLink } from "../../../server/blogs";
 import Root from "../../../components/Root";
+import Image from "next/image";
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");
@@ -18,9 +19,15 @@ export async function getStaticPaths() {
   }
 export async function getStaticProps({params}){
         console.log(params)
-        const {id} = params;
+        const {id,nameLink} = params;
+        
         console.log("Getting data...");
-        const posts = await getPostswithid(id);
+        let posts;
+        if(id !== "blog" ){
+           posts = await getPostswithid(id);
+        }else{
+          posts = await getPostswithnameLink(nameLink); 
+        }
         var cfg ={};
       //  console.log(posts.body.ops);
         var converter = new QuillDeltaToHtmlConverter(posts.body.ops,cfg);
@@ -73,6 +80,14 @@ export default function Page({postsData}){
           return imgurl 
         }
   }
+  const imageSrc =postsData?.coverimage;
+  const getOptimizedImageUrl = ({src,width,quality})=>{
+    const pos = getPosition(imageSrc,"/",6)
+    const url = imageSrc.substring(0,pos);
+    const name = imageSrc.substring(pos);
+    const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75},e_blur:200`
+    return (url + parameters+ name);
+}
     //style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}} 
     return (
     <Root>
@@ -86,7 +101,7 @@ export default function Page({postsData}){
         
         <div  className=" page  p-5   relative mx-auto    " >
         <div className="absolute lg:right-20 lg:left-20 md:right-10 md:left-10 right-0 left-0  top-5 content-center   -z-10 " >
-          <img src={`${getImageCLoudinary(postsData?.coverimage)} `} className="w-full max-h-[600px]   " />
+          <Image width={500} height={600} loader={getOptimizedImageUrl} src={`none`} className="w-full max-h-[600px]   " />
         </div>
         <div className=" m-10 mx-auto  bg-white  rounded-xl p-2 max-w-5xl mt-24 sm:mt-52 md:mt-64       " >
 

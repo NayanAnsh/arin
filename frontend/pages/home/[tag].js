@@ -50,83 +50,10 @@ export async function getServerSideProps({params}){
 
 export default function Posts({postsData,headImage}){
 
-//     const [postsData,setpostData] = useState([]);
-//     const [headImage,setHeadImage] = useState([]);
-//     
-    
-//     useEffect(()=>{
-        
 
-//             if(tag !== "allposts"){
-//            getPostswithTag(tag).then((posts)=>{
-//            if(posts.length !==0 ){
-//            setpostData(posts);
-//            }else{
-//             setpostData(["no_posts"]);
-            
-//            }
-           
-           
-      
-//         });
-//     }else if (tag === "allposts" || tag ===""){
-//             getAllPosts().then((posts)=>{
-//                 if(posts.length !==0){
-//                 setpostData(posts);
-//                 }else{
-//                     setpostData(["no_posts"]);
-                    
-//                 }
-           
-//              });
-//     }
-//     if(tag==="lifestyle"){
-//         setHeadImage(lifestyleImg);
-//    }else if(tag==="beauty"){
-//     setHeadImage(beautyImg);
-//    }else if(tag==="foods"){
-//             setHeadImage(foodImg);
-//    }else if(tag==="books"){
-//             setHeadImage(booksImg);
-//    }else if(tag==="fashion"){
-//         setHeadImage(fashionImg);
-//    }else if(tag==="travel"){
-//         setHeadImage(travelImg);
-//    }else if(tag==="allposts"){
-//         setHeadImage(allpostsImg);
-//    }
-        
-//     },[tag])
-    const router = useRouter;
-    const tag = useParams();
-    console.log("UBRA DABRA");
-   // console.log(params);
- //   const [headImage,setHeadImage] = useState([]);
-    useEffect(()=>{
-       // setHeadImage(tag+".png")
-        // if(tag==="lifestyle"){
-        //     setHeadImage(lifestyleImg);
-        // }else if(tag==="beauty"){
-        //     setHeadImage(beautyImg);
-        // }else if(tag==="foods"){
-        //     setHeadImage(foodImg);
-        // }else if(tag==="books"){
-        //     setHeadImage(booksImg);
-        // }else if(tag==="fashion"){
-        //     setHeadImage(fashionImg);
-        // }else if(tag==="travel"){
-        //     setHeadImage(travelImg);
-        // }else{
-        //     setHeadImage(allpostsImg);
-        // }
-    },[tag])
-    
- 
-        //console.log("USER DATA - ");
-       // console.log(useLoaderData());
-      //  const {postsData} = useLoaderData(); 
-     //   const postsData = ["no_posts"]
-    //<NoStoryYet/>
+
+
+
     return(
         
         <Root>

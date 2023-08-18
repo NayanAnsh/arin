@@ -21,9 +21,7 @@ export default function layout({children}){
 
                 
                 <link rel="stylesheet" href="https://use.typekit.net/oov2wcw.css"/>
-  
-        </Head>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-W6818M6MRG"></Script>
+                <Script async src="https://www.googletagmanager.com/gtag/js?id=G-W6818M6MRG"></Script>
         <Script>{`
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
@@ -33,8 +31,9 @@ export default function layout({children}){
                 `
                 }
         </Script>
+        </Head>
+      
         
-        <Script src="//cdn.quilljs.com/1.2.2/quill.min.js"></Script>  
         
         <main>{children}</main>
         </div>

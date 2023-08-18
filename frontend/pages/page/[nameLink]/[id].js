@@ -6,6 +6,7 @@ const QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtm
 import { getAllPaths, getPostswithid, getPostswithnameLink } from "../../../server/blogs";
 import Root from "../../../components/Root";
 import Image from "next/image";
+import Script from "next/script";
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");
@@ -85,7 +86,7 @@ export default function Page({postsData}){
     const pos = getPosition(imageSrc,"/",6)
     const url = imageSrc.substring(0,pos);
     const name = imageSrc.substring(pos);
-    const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75},e_blur:200`
+    const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75}`
     return (url + parameters+ name);
 }
     //style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}} 

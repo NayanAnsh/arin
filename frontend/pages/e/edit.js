@@ -14,6 +14,7 @@ import { addPost } from '../../server/blogs';
 import { useRouter } from 'next/navigation';
 import Root from "../../components/Root";
 import Head from "next/head";
+import Script from "next/script";
 
 
 /*

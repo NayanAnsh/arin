@@ -13,6 +13,7 @@ import { redirect } from 'next/navigation';
 import { addPost } from '../../server/blogs';
 import { useRouter } from 'next/navigation';
 import Root from "../../components/Root";
+import Head from "next/head";
 
 
 /*
@@ -136,6 +137,10 @@ const handlePermaLink = ((e)=>{
         }
     return (
         <Root>
+          <Head>
+          <Script src="//cdn.quilljs.com/1.2.2/quill.min.js"></Script>  
+
+          </Head>
 <div className="container mx-auto mt-8  ">
     <div className=" mx-auto bg-white p-8 border-gray-300 border rounded-lg">
       <h2 className="text-2xl font-semibold mb-4">Create a New Entry</h2>

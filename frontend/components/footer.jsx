@@ -11,7 +11,7 @@ const Footer = () => {
    
     <div className='footer  mt-auto    bottom-0 flex flex-row sm:grid sm:grid-flow-col  sm:justify-between  w-full  '>
         <div className="  sm:border-r-2 border-white border-opacity-50  " >
-        <Image width={144} height={144} src="/assets/footer_logo.png" className=' mx-auto my-auto h-36 sm:h-32 p-3   ' alt="" />
+        <Image width={144} height={144} src="/assets/footer_logo.png" className=' mx-auto my-auto h-36 w-36 sm:h-32 p-3   ' alt="" />
         </div>
         <div className = 'flex sm:hidden mx-auto flex-col sm:flex-row ' >
          

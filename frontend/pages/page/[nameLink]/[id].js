@@ -97,6 +97,10 @@ export default function Page({postsData}){
             <link rel='icon' href= {"/assets/footer_logo.png"} />
             <meta name='description' content={postsData?.metaDes} />
             <meta name="keywords" content={postsData?.metaTags} />
+    
+          <Script src="//cdn.quilljs.com/1.2.2/quill.min.js"></Script>  
+
+          
         </Head>
         
         <div  className=" page  p-5   relative mx-auto    " >

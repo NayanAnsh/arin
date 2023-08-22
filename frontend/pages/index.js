@@ -136,7 +136,7 @@ export default  function Posts({postsData}){
         </Head>
             
           
-            <Image priority className='md:px-20   h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={allpostsImg} alt="Working" />
+            <Image priority={true} className='md:px-20   h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={allpostsImg} alt="Working" />
              
             <div className={postsData[0] !== "no_posts"? " grid grid-cols-2   sm:grid-cols-3 lg:grid-cols-4 m-2   sm:gap-4": "flex"} >
             

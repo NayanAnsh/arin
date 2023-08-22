@@ -16,7 +16,7 @@ export default function layout({children}){
                 <meta name="theme-color" content="#000000" />
 
                 
-
+                <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
                 
                
                 

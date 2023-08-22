@@ -55,7 +55,7 @@ export async function getStaticProps({params}){
      
  }
  export async function getStaticPaths(){
-   const pages = ["lifestyle","travel","beauty","food","books","fashion"]
+   const pages = ["lifestyle","travel","beauty","foods","books","fashion"]
     const paths = pages.map((page) => ({
         params: { tag: page },
       }))

@@ -4,8 +4,13 @@ import Quill from 'quill'
 import {Socket, io} from 'socket.io-client'
 import ImageCompress from 'quill-image-compress';
 import  ImageResize  from 'quill-image-resize';
+import ImageUploader from "quill-image-uploader";
+
+import 'quill-image-uploader/dist/quill.imageUploader.min.css';
+import axios from 'axios';
 Quill.register('modules/imageCompress', ImageCompress);
 Quill.register('modules/imageResize', ImageResize);
+Quill.register("modules/imageUploader", ImageUploader);
 const SAVE_INTERVAL_MS = 5000
 export const documentId = "646ce77d591e3ecb93100f0a"
 const TOOLBAR_OPTIONS = [
@@ -19,7 +24,20 @@ const TOOLBAR_OPTIONS = [
     ["image", "blockquote", "code-block","link"],
     ["clean"],
   ]
-
+  const uploadImage = async (img)=>{
+    const imageFormData = new FormData();
+    imageFormData.append("file",img);
+    imageFormData.append("upload_preset","aarinpreset");
+    imageFormData.append("cloud_name","dqxuucjcd");
+    const cloudRes = await axios.post("https://api.cloudinary.com/v1_1/dqxuucjcd/image/upload",imageFormData);
+    let url = await cloudRes.data.url;
+    console.log(url)
+    console.log(typeof(url))
+    
+    url = url.substring(0,url.indexOf('p')+1)+"s"+url.substring(url.indexOf('p')+1);
+    console.log(url)
+    return url ;
+  }
 export default function Editor( {setQbody}  ) {
     const [socket,setSocket] = useState();
     const [quil,setQuil] = useState();
@@ -56,7 +74,22 @@ export default function Editor( {setQbody}  ) {
                                       },
                                       imageResize: {
                                         // See optional "config" below
-                                    }
+                                    },
+                                    imageUploader: {
+                                      upload: (file) => {
+                                        return new Promise(  (resolve, reject) => {
+                                          uploadImage(file)
+                                          .then((result) => {
+                                            console.log(result);
+                                            resolve(result);
+                                          })
+                                          .catch((error) => {
+                                            reject("Upload failed");
+                                            console.error("Error:", error);
+                                          });;
+                                        });
+                                      },
+                                    },
                                     }})
      
      //  q.enable(false)

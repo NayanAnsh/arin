@@ -18,31 +18,45 @@ import LoadingScreen from "../components/LoadingScreen"
 import NoStoryYet from "../components/NoStoryYet";
 import Image from "next/image";
 import Root from "../components/Root";
-export async function getServerSideProps(){
-            
-      
-        
-            
-       
-                let postsData;
-                let posts =await  getAllPosts()
+// export async function getServerSideProps(){
+
+//                 let postsData;
+//                 let posts =await  getAllPosts()
                 
-                    if(posts.length !==0){
-                        postsData = posts;
-                    }else{
-                        postsData = ["no_posts"];
-                    }
-                
-                
-        
-    
-        
-        return ({
-            props:{postsData}
-        })
+//                     if(posts.length !==0){
+//                         postsData = posts;
+//                     }else{
+//                         postsData = ["no_posts"];
+//                     }
+
+//         return ({
+//             props:{postsData}
+//         })
         
      
- }
+//  }
+export async function getStaticProps(){
+        let postsData;
+        let posts =await  getAllPosts()
+        
+            if(posts.length !==0){
+                postsData = posts;
+            }else{
+                postsData = ["no_posts"];
+            }
+
+    return ({
+    props:{postsData}
+    })
+
+}
+//  export async function getStaticPaths(){
+//     pages = ["","lifestyle","travel","beauty","food","books","fashion"]
+//     const paths = pages.map((post) => ({
+//         params: { id: post.id },
+//       }))
+//     return { paths, fallback: false }
+//  }
 
 
 export default  function Posts({postsData}){

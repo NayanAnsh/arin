@@ -118,7 +118,11 @@ export default  function Posts({postsData}){
      //   const {postsData} = useLoaderData(); 
         
     //<NoStoryYet/>
-
+/*
+            { headImage ?
+            <Image priority className='md:px-20 transition-all  h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={headImage} alt="Working" />
+            : <div className='  md:px-20 ease-in transition-all  h-[150px]  mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full bg-slate-200   ' /> } 
+*/
     return(
         
       
@@ -132,9 +136,7 @@ export default  function Posts({postsData}){
             <meta name="keywords" content="lifestyle,travel,beauty,food,books,fashion" />
         </Head>
             
-            { headImage ?
-            <Image className='md:px-20 transition-all  h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={150} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={headImage} alt="Working" />
-            : <div className='  md:px-20 ease-in transition-all  h-[150px]  mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full bg-slate-200   ' /> }       
+      
             <div className={postsData[0] !== "no_posts"? " grid grid-cols-2   sm:grid-cols-3 lg:grid-cols-4 m-2   sm:gap-4": "flex"} >
             
             { postsData.length !== 0 && postsData[0] !== "no_posts" ? ( postsData.map((post)=> {

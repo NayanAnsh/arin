@@ -35,9 +35,14 @@ const blogSchema = new mongoose.Schema({
         type:String,
         required:true
     },
+    cardimagealt:{
+        type:String
+    },
     coverimage:{
-        type:String,
-        required:true
+        type:String
+    },
+    coverimagealt:{
+        type:String
     },
     createdAt:{
         type:Date,

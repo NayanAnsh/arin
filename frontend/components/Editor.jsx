@@ -40,7 +40,7 @@ export default function Editor( {setQbody}  ) {
         wrapper.innerHTML ="";
         const edit = document.createElement("div");
         wrapper.append(edit)
-       
+     
         
        const q= new Quill(edit, {theme:"snow",
                               modules:{
@@ -58,7 +58,8 @@ export default function Editor( {setQbody}  ) {
                                         // See optional "config" below
                                     }
                                     }})
-       q.enable(false)
+     
+     //  q.enable(false)
        q.setText('LOADING...');
         setQuil(q);
     },[])
@@ -92,6 +93,7 @@ export default function Editor( {setQbody}  ) {
   
         quil.updateContents(delta);
       }
+      
       socket.on('receive-changes',handler );
       return ()=>{
         socket.off('receive-changes',handler);
@@ -104,11 +106,85 @@ export default function Editor( {setQbody}  ) {
         if(source !== 'user') return
         console.log("QUIL UPDATE");
         setQbody({body:quil.getContents(),text:quil.getText(0,50)});
+     
         socket.emit('send-changes',delta)
       }
       quil.on('text-change',handler );
       return ()=>{
         quil.off('text-change',handler);
+      }
+    },[socket,quil])
+    useEffect(()=>{
+      if(socket == null || quil == null) return
+      //imageHandler add alt tags to all images entered the alt tag should be above image within % %
+      const imageHandler = (range, oldRange, source)=>{
+        if(source !== 'user') return
+        
+        var delta  = quil.getContents();
+        console.log(delta)
+        var toUpdate = 0
+        var imageIndex = 0;
+        var alts = [""]
+        const pattern = /%.*%/i;
+
+        const cursorPos = quil.getSelection()?.index;
+        console.log(cursorPos)
+        var newDelta = {"ops":delta.ops.map((op)=>{
+          
+          if(typeof(op.insert) === typeof("string") ){
+           // console.log(op.insert)
+            var temp = op.insert.match(pattern); // a insert row should is expected to contain only one alt tag
+            
+            if(temp){
+              //console.log(temp[0].substring(1))
+              var altText = temp[0].substring(1,temp[0].length-1)
+            //  console.log("Found -- "+altText)
+              alts[imageIndex] = altText
+            }
+            return op;
+        }
+          else if(op.insert.image){
+            imageIndex++
+            if( op.attributes && op.attributes.alt !== alts[imageIndex-1]){
+                  op.attributes.alt = alts[imageIndex-1];
+                  toUpdate = 1;
+              return op
+            }
+            
+            if(!op.attributes){
+              if(alts[imageIndex-1]){
+              const row = {"insert":{"image":op.insert.image},
+                            "attributes":{alt: alts[imageIndex-1]}
+                          }
+                          toUpdate = 1;
+                          
+                          return row;
+                        }else{
+                          
+                          console.log("No alt text found");
+                          return op;
+                        }
+
+            }
+            
+            return op
+          }else{
+            return op;
+          }
+        })}
+       // console.log(alts);
+       // console.log(imageIndex)
+        if(toUpdate === 1){
+       //   console.log("NEw deltaa =--= ")
+     //     console.log(newDelta)
+          quil.setContents(newDelta);
+          setTimeout(() => quil.setSelection(cursorPos, 0), 0)
+          
+        }
+      }
+      quil.on('selection-change',imageHandler );
+      return ()=>{
+        quil.off('selection-change',imageHandler);
       }
     },[socket,quil])
     

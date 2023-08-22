@@ -46,7 +46,7 @@ router.get('/', async (req,res)=>{
 
     console.log("All post command received");
         const blogs = await Blog.find({})
-        .select("_id title text tag nameLink cardimage")
+        .select("_id title text tag nameLink cardimage cardimagealt ")
         .sort('-createdAt')
 
         .lean();
@@ -76,7 +76,7 @@ router.get('/posts/:tag',async(req,res)=>{
     console.log(`req with ${req.params.tag}`);
     try{
     const blogs = await Blog.find({tag:req.params.tag})
-        .select("_id title text tag nameLink cardimage")
+        .select("_id title text tag nameLink cardimage cardimagealt")
         
         .sort('-createdAt')
         .lean();

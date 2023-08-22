@@ -125,7 +125,7 @@ export default  function Posts({postsData}){
             
             { postsData.length !== 0 && postsData[0] !== "no_posts" ? ( postsData.map((post)=> {
                 
-            return <Card key={post._id} title={post.title} body = {post.text} tag= {post.tag} nameLink = {post.nameLink} imageSrc= {post.cardimage} id = {post._id} />
+            return <Card key={post._id} title={post.title} cardimagealt = {post.cardimagealt} body = {post.text} tag= {post.tag} nameLink = {post.nameLink} imageSrc= {post.cardimage} id = {post._id} />
         })
         ): postsData[0]==="no_posts"?  <NoStoryYet/>  : <LoadingScreen/>
         

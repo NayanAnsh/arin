@@ -43,7 +43,10 @@ const [metaDes, setMetaDes] = useState([]);
 const [permaLink,setpermaLink] = useState("");
 const [tag,setTag] = useState("lifestyle");
 const [cardImage, setCardImage] = useState("");
+const [cardImageAlt, setCardImageAlt] = useState("");
 const [coverImage,setCoverImage]= useState("");
+const [coverImageAlt,setCoverImageAlt]= useState("");
+
 const [qdata,setQbody] = useState([]);
 
 const [desWordCount,setDesWordCount] = useState([]);
@@ -78,12 +81,21 @@ const handlePermaLink = ((e)=>{
     setCardImage(data.target.files[0]);
     
     }
+    const handleCardImageAlt = (e)=>{
+      
+      setCardImageAlt(e.target.value);
+    }
     function handleCoverImage(data){
     setCoverImage(data.target.files[0]);
+    }
+    const handleCoverImageAlt = (e)=>{
+      
+      setCoverImageAlt(e.target.value);
     }
     const handleTag = (e)=>{
         setTag(e.target.value);
     }
+    
     //upload image
     const uploadImage = async (img)=>{
         const imageFormData = new FormData();
@@ -91,10 +103,33 @@ const handlePermaLink = ((e)=>{
         imageFormData.append("upload_preset","aarinpreset");
         imageFormData.append("cloud_name","dqxuucjcd");
         const cloudRes = await axios.post("https://api.cloudinary.com/v1_1/dqxuucjcd/image/upload",imageFormData);
-        return await cloudRes.data.url;
+        let url = await cloudRes.data.url;
+        console.log(url)
+        console.log(typeof(url))
+        
+        url = url.substring(0,url.indexOf('p')+1)+"s"+url.substring(url.indexOf('p')+1);
+        console.log(url)
+        return url ;
       }
       //upload finale file to database
       const { push } = useRouter();
+          function processQuillData(qdata){
+            const pattern = /%.*%/i
+            const newqdata = {"ops":qdata.map((op)=>{
+              
+              if(typeof(op.insert) == typeof("String")){
+                  const match = pattern.exec(op.insert)
+                  if(match){
+                    //console.log(match.index  + match[0].length); //last Index
+                    op.insert =(op.insert.substring(0,match.index)  +op.insert.substring(match.index  + match[0].length) );
+                      
+                  }
+              }
+              return op
+            })
+          }
+          return newqdata
+          }
          async function handleSubmit(event){
             // console.log(qdata)
             // console.log(request)
@@ -103,24 +138,29 @@ const handlePermaLink = ((e)=>{
             // console.log(cardImage);
             // console.log(coverImage);
             event.preventDefault();
-            alert("press ok to confirm");
+          //  alert("press ok to confirm");
             
             if(cardImage === undefined && coverImage === undefined ){
             console.log("No cover or card image found");
             alert("No cover or card image found");
             return redirect("/e/edit");
             }
-        
+            const qbody = processQuillData(qdata.body)
+            console.log(qbody)
+          
             console.log("uploading images");
             const cardURL  = await uploadImage(cardImage);
             const coverURL  = await uploadImage(coverImage);
+            
             
             const data = {tag:tag ,
                 title:title ,
                 body: qdata.body,
                 text:qdata.text,
                 cardimage:cardURL,
+                cardimagealt:cardImageAlt,
                 coverimage:coverURL,
+                coverimagealt:coverImageAlt,
                 metaTags:metaTags,
                 metaDes:metaDes,
                 nameLink:permaLink
@@ -185,9 +225,13 @@ const handlePermaLink = ((e)=>{
         
         <label for="cardImage" className="block text-gray-700 font-medium mb-2"   >Card Image</label>
         <input type="file"  id="cardImage" onChange={handleCardImage}  name="cardImage" />
+        <label for="cardImageAlt" className="block text-gray-700 font-medium mb-2"   >Card Image Alt</label>
+        <textarea type="text" id="cardImageAlt" className="border-solid w-full h-24 border-2 rounded-xl "  onChange={handleCardImageAlt} name="cardImageAlt" />
 
         <label for="cover" className="block text-gray-700 font-medium mb-2"   >Cover Image</label>
         <input type="file" id="coverImage" onChange={handleCoverImage} name="coverImage" />
+        <label for="coverImageAlt" className="block text-gray-700 font-medium mb-2"   >Cover Image Alt</label>
+        <textarea type="text" id="coverImageAlt" className="border-solid w-full h-24 border-2 rounded-xl" onChange={handleCoverImageAlt} name="coverImageAlt" />
 
         <div className="mb-4">
           <label for="content" className="block text-gray-700 font-medium mb-2">Content</label>

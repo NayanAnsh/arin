@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 
-export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
+export default function Card  ({ title,cardimagealt, body, imageSrc,nameLink, tag,id }){
     var tbody;
     if(body){
      tbody = body.slice(0,30) + "..."
@@ -35,13 +35,14 @@ export default function Card  ({ title, body, imageSrc,nameLink, tag,id }){
     }
     //loader={()=>imgurl}
     //aspect-[1.33]
+    console.log(cardimagealt)
     return (
     
     
 <div className="md:max-w-xs max-w-[200px] m-4 sm:m-8 drop-shadow-[5px_5px_3.5px_rgba(0,0,0,0.15)] bg-white  border-[#FFE3AA] rounded-[20px] border-2 border-solid  " >
     <Link href={ nameLink  ? `/page/${nameLink}/${id}` :`/page/blog/${id}`}>
     <div className="p-1" >
-    <Image width={300} height={300} sizes="(max-width: 768px) 30vw, (max-width: 1200px) 25vw, 10vw" src={"none"} loader={getOptimizedImageUrl} className="rounded-[20px]   w-10/12 my-2 sm:my-0 mx-auto  sm:w-full "  alt=" No image" />
+    <Image width={300} height={300} sizes="(max-width: 768px) 30vw, (max-width: 1200px) 25vw, 10vw" src={"none"} loader={getOptimizedImageUrl} className="rounded-[20px]   w-10/12 my-2 sm:my-0 mx-auto  sm:w-full "  alt={cardimagealt || "AARIN"} />
 
     </div>
     <div className=" p-2 sm:p-5">

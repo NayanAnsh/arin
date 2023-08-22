@@ -7,6 +7,8 @@ import { getAllPaths, getPostswithid, getPostswithnameLink } from "../../../serv
 import Root from "../../../components/Root";
 import Image from "next/image";
 import Script from "next/script";
+import { GroupType } from "quill-delta-to-html";
+import faceBookImage from "../../../src/assets/facebookLogo.jpg"
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");
@@ -30,12 +32,33 @@ export async function getStaticProps({params}){
           posts = await getPostswithnameLink(nameLink); 
         }
         var cfg ={};
-      //  console.log(posts.body.ops);
-        var converter = new QuillDeltaToHtmlConverter(posts.body.ops,cfg);
+       // console.log(posts.body.ops);
+        const quillData = posts.body;
+        console.log("Data")
+        for(let op in quillData.ops) {
+          // If we have image op
+          if(quillData.ops[op].insert.image) {
+              // Set it as custom op and copy original data
+              quillData.ops[op].insert.customImage = quillData.ops[op].insert.image;
+              // Delete original image op
+              delete quillData.ops[op].insert.image;
+          }
+      }
+      var converter = new QuillDeltaToHtmlConverter(quillData.ops,cfg);
+//
+        converter.renderCustomWith(function(customOp,contextOp){
+          
+            if(customOp.insert.type === "customImage"){
+              
+              return (`<img alt= "${customOp.attributes.alt}" src="${customOp.insert.value}"    />`)
+            }else{
+              return "Unmanageble image"
+            }
+        })
         var html  = converter.convert();
        // console.log("HTML----");
         posts.body = html;
-      //  console.log(posts);
+       // console.log(html);
         
         //console.log("DDATA");
         return {
@@ -89,6 +112,7 @@ export default function Page({postsData}){
     const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75}`
     return (url + parameters+ name);
 }
+  console.log(postsData)
     //style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}} 
     return (
     <Root>
@@ -106,15 +130,15 @@ export default function Page({postsData}){
         
         <div  className=" page  p-5   relative mx-auto    " >
         <div className="absolute lg:right-20 lg:left-20 md:right-10 md:left-10 right-0 left-0  top-5 content-center   -z-10 " >
-          <Image width={500} height={600} loader={getOptimizedImageUrl} src={`none`} className="w-full max-h-[600px]   " />
+          <Image priority alt={postsData.coverimagealt} width={500} height={600} loader={getOptimizedImageUrl} src={`none`} className="w-full max-h-[600px]   " />
         </div>
         <div className=" m-10 mx-auto  bg-white  rounded-xl p-2 max-w-5xl mt-24 sm:mt-52 md:mt-64       " >
 
             <h1 className=" lg:text-7xl mt-4   text-4xl w-fit mx-auto lg:px-11 px-5   ">{postsData?.title}</h1>
             <div className="flex ml-auto my-8 sm:space-x-4 sm:mr-4 w-max flex-row">
-                <img src="/assets/facebookLogo.jpg" className=" p-1 sm:p-0  my-auto sm:ml-10 icons  rounded-full " alt="" />
-                <img src="/assets/instagram.jpg" className=" p-1 sm:p-0 my-auto icons rounded-full" alt="" />
-                <img src="/assets/twitter.jpg" className=" p-1 sm:p-0  sm:mr-8 my-auto icons rounded-full" alt="" />
+                <Image src={faceBookImage} className=" p-1 sm:p-0  my-auto sm:ml-10 icons  rounded-full " alt="" />
+                <Image width={1} height={1} src="/assets/instagram.jpg" className=" p-1 sm:p-0 my-auto icons rounded-full" alt="" />
+                <Image width={1} height={1} src="/assets/twitter.jpg" className=" p-1 sm:p-0  sm:mr-8 my-auto icons rounded-full" alt="" />
 
             </div>
             <div className="p-10 sm:mx-4    pageblog rounded-sm" dangerouslySetInnerHTML={{__html:postsData.body}} />

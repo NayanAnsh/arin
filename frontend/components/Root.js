@@ -22,7 +22,6 @@ const Root = ({children,params}) =>{
     const menuCSSClass = "font-serif font-bold uppercase  nav_items";
     const p =   useParams();
     //{navigation.state === "loading" ? "loading":""}
-    console.log("ROUTERR -- "+router.pathname)
     // <div className={navigation.state === "loading" ?'absolute z-10 top-1/2 left-1/2 ':"hidden"} >
     //                         <SpinningLoader/>
     //                     </div>

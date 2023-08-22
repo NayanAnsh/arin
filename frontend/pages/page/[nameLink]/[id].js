@@ -8,7 +8,10 @@ import Root from "../../../components/Root";
 import Image from "next/image";
 import Script from "next/script";
 import { GroupType } from "quill-delta-to-html";
-import faceBookImage from "../../../src/assets/facebookLogo.jpg"
+import faceBookImage from "../../../src/assets/facebookLogo.webp"
+
+import twitter from '../../../src/assets/twitter.webp'
+import instagram from '../../../src/assets/instagram.webp'
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");
@@ -137,8 +140,8 @@ export default function Page({postsData}){
             <h1 className=" lg:text-7xl mt-4   text-4xl w-fit mx-auto lg:px-11 px-5   ">{postsData?.title}</h1>
             <div className="flex ml-auto my-8 sm:space-x-4 sm:mr-4 w-max flex-row">
                 <Image src={faceBookImage} className=" p-1 sm:p-0  my-auto sm:ml-10 icons  rounded-full " alt="" />
-                <Image width={1} height={1} src="/assets/instagram.jpg" className=" p-1 sm:p-0 my-auto icons rounded-full" alt="" />
-                <Image width={1} height={1} src="/assets/twitter.jpg" className=" p-1 sm:p-0  sm:mr-8 my-auto icons rounded-full" alt="" />
+                <Image src={instagram} className=" p-1 sm:p-0 my-auto icons rounded-full" alt="" />
+                <Image  src={twitter} className=" p-1 sm:p-0  sm:mr-8 my-auto icons rounded-full" alt="" />
 
             </div>
             <div className="p-10 sm:mx-4    pageblog rounded-sm" dangerouslySetInnerHTML={{__html:postsData.body}} />

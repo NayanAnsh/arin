@@ -1,6 +1,6 @@
 // import Card from "../components/Card";
 // import lifestyleImg from "../components/resources/lifestyle.png"
- import allpostsImg from "../src/assets/AllPosts.png"
+ import allpostsImg from "../src/assets/AllPosts.webp"
 // import beautyImg from "../components/resources/Beauty.png"
 // import booksImg from "../components/resources/Books.png"
 // import fashionImg from "../components/resources/Fashion.png"

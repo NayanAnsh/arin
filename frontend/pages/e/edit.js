@@ -168,7 +168,9 @@ const handlePermaLink = ((e)=>{
             console.log("uploading blog");
             console.log(data);
             await addPost(data);
-            
+          
+            await axios.get(`https://aarin.netlify.app/api/revalidate?secret=1234&tag=${tag}`);
+           // await axios.get(`http://localhost:3000/api/revalidate?secret=1234&tag=${tag}`)
             console.log(`/home/${data.tag}`);
             alert("Data uploaded");
             

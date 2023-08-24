@@ -1,7 +1,7 @@
 export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Origin', '*');
     // Check for secret to confirm this is a valid request
-    if (req.query.secret !== process.env.NEXT_PUBLIC_SECRET_TOKEN) {
+    if (req.query.secret !== "1234") {
       return res.status(401).json({ message: 'Invalid token' })
     }
    

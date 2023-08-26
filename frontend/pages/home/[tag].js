@@ -50,7 +50,7 @@ export async function getStaticProps({params}){
          
         
         return ({
-            props:{postsData,headImage}
+            props:{postsData,headImage},revalidate: 600
         })
      
  }

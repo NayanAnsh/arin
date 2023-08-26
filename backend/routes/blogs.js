@@ -71,6 +71,7 @@ router.get('/paths', async (req,res)=>{
     res.send(json);
 
 })
+
 //@desc find blogs with specific tags
 router.get('/posts/:tag',async(req,res)=>{
     console.log(`req with ${req.params.tag}`);
@@ -79,6 +80,7 @@ router.get('/posts/:tag',async(req,res)=>{
         .select("_id title text tag nameLink cardimage cardimagealt")
         
         .sort('-createdAt')
+        
         .lean();
         json =  JSON.stringify(blogs);
     
@@ -88,6 +90,7 @@ router.get('/posts/:tag',async(req,res)=>{
         res.send([]);
     }
 })
+
 //@desc find post by id
 router.get('/posts/id/:id',async (req,res)=>{
     console.log(`req with id- ${req.params.id}`);
@@ -99,6 +102,24 @@ router.get('/posts/id/:id',async (req,res)=>{
         res.send(json)
     }catch(err){
         console.log("search with id error - "+err);
+        res.send([]);
+    }
+})
+//@desc find blogs with specific tags and quantity
+router.get('/posts/:tag/:quantity',async(req,res)=>{
+    console.log(`req with ${req.params.tag}`);
+    try{
+    const blogs = await Blog.find({tag:req.params.tag})
+        .select("_id title text tag nameLink cardimage cardimagealt")
+        
+        .sort('-createdAt')
+        .limit(req.params.quantity)
+        .lean();
+        json =  JSON.stringify(blogs);
+    
+        res.send(json)
+    }catch(err){
+        console.log("search with tag error and quantity  - "+err);
         res.send([]);
     }
 })

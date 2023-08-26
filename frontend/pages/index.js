@@ -1,13 +1,13 @@
 // import Card from "../components/Card";
 // import lifestyleImg from "../components/resources/lifestyle.png"
  import allpostsImg from "../src/assets/AllPosts.webp"
+ import allpostsImgPNG from "../src/assets/AllPosts.png"
 // import beautyImg from "../components/resources/Beauty.png"
 // import booksImg from "../components/resources/Books.png"
 // import fashionImg from "../components/resources/Fashion.png"
 // import travelImg from "../components/resources/Travel.png"
 // import foodImg from "../components/resources/Food.png"
 // import LoadingScreen from "../components/LoadingScreen";
-
 import { useEffect,useState } from "react";
 import { getAllPosts, getPostswithTag } from "../server/blogs";
 //import { useLoaderData } from "react-router-dom";
@@ -18,6 +18,7 @@ import LoadingScreen from "../components/LoadingScreen"
 import NoStoryYet from "../components/NoStoryYet";
 import Image from "next/image";
 import Root from "../components/Root";
+const metaData = require('../src/meta/index.json')
 // export async function getServerSideProps(){
 
 //                 let postsData;
@@ -44,7 +45,7 @@ export async function getStaticProps(){
             }else{
                 postsData = ["no_posts"];
             }
-
+    console.log(metaData)
     return ({
     props:{postsData} ,revalidate: 600,
     })
@@ -61,67 +62,17 @@ export async function getStaticProps(){
 
 export default  function Posts({postsData}){
 
-//     const [postsData,setpostData] = useState([]);
-//     const [headImage,setHeadImage] = useState([]);
-//     
-    
-//     useEffect(()=>{
-        
-
-//             if(tag !== "allposts"){
-//            getPostswithTag(tag).then((posts)=>{
-//            if(posts.length !==0 ){
-//            setpostData(posts);
-//            }else{
-//             setpostData(["no_posts"]);
-            
-//            }
-           
-           
-      
-//         });
-//     }else if (tag === "allposts" || tag ===""){
-//             getAllPosts().then((posts)=>{
-//                 if(posts.length !==0){
-//                 setpostData(posts);
-//                 }else{
-//                     setpostData(["no_posts"]);
-                    
-//                 }
-           
-//              });
-//     }
-//     if(tag==="lifestyle"){
-//         setHeadImage(lifestyleImg);
-//    }else if(tag==="beauty"){
-//     setHeadImage(beautyImg);
-//    }else if(tag==="foods"){
-//             setHeadImage(foodImg);
-//    }else if(tag==="books"){
-//             setHeadImage(booksImg);
-//    }else if(tag==="fashion"){
-//         setHeadImage(fashionImg);
-//    }else if(tag==="travel"){
-//         setHeadImage(travelImg);
-//    }else if(tag==="allposts"){
-//         setHeadImage(allpostsImg);
-//    }
-        
-//     },[tag])
-   
-    const [headImage,setHeadImage] = useState("/assets/AllPosts.png");
-    // const [postsData,setpostData] = useState(["no_posts"]);
-    
- 
-        //console.log("USER DATA - ");
-       // console.log(useLoaderData());
-     //   const {postsData} = useLoaderData(); 
-        
-    //<NoStoryYet/>
-/**
-            { headImage ?
-            <Image priority className='md:px-20 transition-all  h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={allpostsImg} alt="Working" />
-            : <div className='  md:px-20 ease-in transition-all  h-[150px]  mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full bg-slate-200   ' /> }   */
+    function getPosition(string, subString, index) {
+        return string.split(subString, index).join(subString).length;
+      }
+    const getOptimizedImageUrl = ({src,width,quality})=>{
+        const imageSrc = "https://res.cloudinary.com/dqxuucjcd/image/upload/v1693074119/aarin/aarin.png"
+        const pos = getPosition(imageSrc,"/",6)
+        const url = imageSrc.substring(0,pos);
+        const name = imageSrc.substring(pos);
+        const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75}`
+        return (url + parameters+ name);
+    }
     return(
         
       
@@ -129,14 +80,26 @@ export default  function Posts({postsData}){
         <div  >
             <Head>
             
-            <title>{"AARIN HOME"  }</title>
-            <link rel='icon' href= "/assets/footer_logo.png" />
-            <meta name='description' content='A blog website about fashion lifestyle beauty food books fashion ' />
-            <meta name="keywords" content="lifestyle,travel,beauty,food,books,fashion" />
+            <title>{metaData.title  }</title>
+           
+            <meta name='description' content={metaData.Metades}/>
+            <meta name="keywords" content={metaData.Keywords} />
+
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:type" content="blog" />
+            <meta property="og:title" content={metaData.title}/>
+            <meta property="og:description" content={metaData.Metades}/>
+            <meta property="og:url" content="https://aarin.netlify.app/" />
+
+            <meta property="og:image" content={getOptimizedImageUrl({width:1200})} />
+            <meta property="og:image:type" content="image/png" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="627" />
+
         </Head>
             
           
-            <Image priority={true} className='md:px-20   h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={allpostsImg} alt="Working" />
+            <Image priority={true} className='md:px-20   h-[150px] mx-auto  mt-4 sm:mt-0 object-cover sm:object-contain  sm:h-auto sm:w-full  ' height={400} width={1000} sizes="(max-width: 768px) 100vw, (max-width: 1200px) 90vw, 80vw"  src={allpostsImg} alt={metaData.altpic} />
              
             <div className={postsData[0] !== "no_posts"? " grid grid-cols-2   sm:grid-cols-3 lg:grid-cols-4 m-2   sm:gap-4": "flex"} >
             

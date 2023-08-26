@@ -1,0 +1,44 @@
+{
+    "lifestyle": {
+      "title": "Lifestyle",
+      "keywords": "Healthy lifestyle, Lifestyle blogs, Balanced lifestyle, Lifestyle inspiration, Mindfulness",
+      "metades": "Explore the latest trends, tips, and inspiration for a healthy and balanced lifestyle.",
+      "altpic": "Group of diverse individuals engaged in activities including reading, playing, working, and socializing."
+    },
+    "travel": {
+      "title": "Travel",
+      "keywords": "Travel destinations, Vacation ideas, Budget travel, Backpacking, Adventure activities",
+      "metades": "Discover the world with our comprehensive travel guides, vacation ideas, and insider tips.",
+      "altpic": "Travel topics surrounding the central word 'Travel': Destinations, food, glasses, sun and more"
+    },
+    "beauty": {
+      "title": "Beauty",
+      "keywords": "Beauty tips, Skincare routine, Beauty products, Nail trends, Bath and body products, Organic beauty",
+      "metades": "Discover the latest beauty tips, skincare routines, makeup tutorials, and haircare techniques to enhance your natural beauty.",
+      "altpic": "Image depicting the word 'Beauty' at the center, surrounded by a variety of beauty products including skincare, makeup, haircare, fragrances, and more."
+    },
+    "foods": {
+      "title": "Foods",
+      "keywords": "Food Recipes,Healthy Eating,Cooking Tips,International flavours,Diet",
+      "metades": "Discover the art of healthy eating and explore a world of flavors",
+      "altpic": "Variety of delicious dishes surrounding the word 'food' in the center"
+    },
+    "books": {
+      "title": "Books",
+      "keywords": "Literature, Fiction, Bookworm, must-read, books",
+      "metades": "Discover a treasure trove of literary delights, from bestsellers to timeless classics.",
+      "altpic": "Various study materials and objects including books, notebooks and pens"
+    },
+    "fashion": {
+      "title": "Fashion",
+      "keywords": "Fashion,Style,Clothing,Fashion Trends,Wardrobe,Outfit ideas",
+      "metades": "Step into the world of fashion and explore the latest trends, styles, and inspiration on our fashion page.",
+      "altpic": "Assortment of fashion items including clothing, shoes, accessories, and jewelry"
+    },
+    "other": {
+      "title": "Other",
+      "keywords": "Other Topics,Additional Resources,Extra Information,Unique Content,Diverse Topics",
+      "metades": "Discover a diverse range of content and resources on our comprehensive 'Other' page.",
+      "altpic": "The word 'Other' written in the middle surrounded by vibrant red flowers"
+    }
+  }

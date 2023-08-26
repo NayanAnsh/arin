@@ -26,6 +26,21 @@ export async function getAllPaths(){
         return [];
     }
 }
+export async function  getPostswithTagWithQuantity(tag,quantity){
+
+    try{
+        const Tag = tag.toLowerCase();
+        const res = await axios.get(`${URI}posts/${Tag}/${quantity}`);
+        return res.data;
+
+    }catch(err){
+        console.log("error from get getposttags with quantity " + err)
+        return [];
+
+    }
+    
+
+}
 export async function  getPostswithTag(tag){
 
     try{
@@ -41,8 +56,9 @@ export async function  getPostswithTag(tag){
     
 
 }
-export async function  getPostswithid(id){
 
+export async function  getPostswithid(id){
+    console.log("req with id");
     try{
         
         const res = await axios.get(`${URI}posts/id/${id}`);

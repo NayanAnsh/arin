@@ -138,7 +138,7 @@ const handlePermaLink = ((e)=>{
             // console.log(cardImage);
             // console.log(coverImage);
             event.preventDefault();
-          //  alert("press ok to confirm");
+            alert("press ok to confirm");
             
             if(cardImage === undefined && coverImage === undefined ){
             console.log("No cover or card image found");
@@ -169,7 +169,7 @@ const handlePermaLink = ((e)=>{
             console.log(data);
             await addPost(data);
           
-            await axios.get(`https://aarin.netlify.app/api/revalidate?secret=1234&tag=${tag}`);
+        //    await axios.get(`https://aarin.netlify.app/api/revalidate?secret=1234&tag=${tag}`);
            // await axios.get(`http://localhost:3000/api/revalidate?secret=1234&tag=${tag}`)
             console.log(`/home/${data.tag}`);
             alert("Data uploaded");
@@ -222,6 +222,8 @@ const handlePermaLink = ((e)=>{
             <option value="foods">Food</option>
             <option value="books">Books</option>
             <option value="fashion">Fashion</option>
+            <option value="others">Others</option>
+            
        
         </select>
         

@@ -85,7 +85,13 @@ const Root = ({children,params}) =>{
                                 fashion
                                 </Link>
                                 </li>
+                                <li className="font-serif font-bold uppercase nav_items" >
+                            <Link href={`/home/others`}  activeclassname={"active"}>
+                                Others
+                                </Link>
+                                </li>
                             </ul>
+                            
                             <FiSearch className='icons my-auto mr-4 bg-[#FFE3AA] p-1 border-black border-2  rounded-full ' />
                             
                         </nav>

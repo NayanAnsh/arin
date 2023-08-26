@@ -3,7 +3,7 @@
 import Head from "next/head";
 const QuillDeltaToHtmlConverter = require('quill-delta-to-html').QuillDeltaToHtmlConverter;
 
-import { getAllPaths, getPostswithid, getPostswithnameLink } from "../../../server/blogs";
+import { getAllPaths, getPostswithTag, getPostswithTagWithQuantity, getPostswithid, getPostswithnameLink } from "../../../server/blogs";
 import Root from "../../../components/Root";
 import Image from "next/image";
 import Script from "next/script";
@@ -12,6 +12,8 @@ import faceBookImage from "../../../src/assets/facebookLogo.webp"
 
 import twitter from '../../../src/assets/twitter.webp'
 import instagram from '../../../src/assets/instagram.webp'
+import Card from "../../../components/Card";
+import CardRectangle from "../../../components/CardRectangle";
 export async function getStaticPaths() {
     const paths = await getAllPaths();
     console.log("PATHSS ---");
@@ -26,7 +28,7 @@ export async function getStaticPaths() {
 export async function getStaticProps({params}){
         console.log(params)
         const {id,nameLink} = params;
-        
+       
         console.log("Getting data...");
         let posts;
         if(id !== "blog" ){
@@ -35,6 +37,9 @@ export async function getStaticProps({params}){
           posts = await getPostswithnameLink(nameLink); 
         }
         var cfg ={};
+        
+        const relatedPosts =  await getPostswithTagWithQuantity(posts.tag,3)
+        
        // console.log(posts.body.ops);
         const quillData = posts.body;
         console.log("Data")
@@ -67,11 +72,12 @@ export async function getStaticProps({params}){
         return {
             props: {
               "postsData":posts,
+              "relatedPosts":relatedPosts
             },
           };
        // return {"postsData":posts};
 }
-export default function Page({postsData}){
+export default function Page({postsData,relatedPosts}){
         
         
   //  const [postsData,setpostData] = useState([]);
@@ -92,21 +98,11 @@ export default function Page({postsData}){
     
     //const postsData = null;
     
-
+  console.log(relatedPosts)
     function getPosition(string, subString, index) {
       return string.split(subString, index).join(subString).length;
     }
-    function getImageCLoudinary(imageSrc){
 
-        if(imageSrc ){
-          const pos = getPosition(imageSrc,"/",6)
-          const url = imageSrc.substring(0,pos);
-          const name = imageSrc.substring(pos);
-          const parameters = "/b_auto,c_fill_pad,g_auto,h_600,w_1067"
-          const imgurl = url + parameters+ name;
-          return imgurl 
-        }
-  }
   const imageSrc =postsData?.coverimage;
   const getOptimizedImageUrl = ({src,width,quality})=>{
     const pos = getPosition(imageSrc,"/",6)
@@ -115,7 +111,7 @@ export default function Page({postsData}){
     const parameters = `/b_auto,c_fill_pad,g_auto,w_${width},q_${quality|| 75}`
     return (url + parameters+ name);
 }
-  console.log(postsData)
+  
     //style={{backgroundImage:`url(${postsData?.coverimage})`,overflow: 'hidden'}} 
     return (
     <Root>
@@ -125,7 +121,21 @@ export default function Page({postsData}){
             <link rel='icon' href= {"/assets/footer_logo.png"} />
             <meta name='description' content={postsData?.metaDes} />
             <meta name="keywords" content={postsData?.metaTags} />
-    
+            <meta name="twitter:card" content="summary"></meta>
+            <meta property="og:locale" content="en_US" />
+            <meta property="og:type" content="blog" />
+            <meta property="og:title" content={postsData?.title}/>
+            <meta property="og:description" content={postsData.metaDes}/>
+            <meta property="og:url" content="https://aarin.netlify.app/" />
+
+            <meta property="og:image" content={getOptimizedImageUrl({width:1200,quality:75})} />
+            <meta property="og:image:type" content="image/jpg" />
+            <meta property="og:image:width" content="1200" />
+            <meta property="og:image:height" content="627" />
+
+            
+
+
           <Script src="//cdn.quilljs.com/1.2.2/quill.min.js"></Script>  
 
           
@@ -148,8 +158,16 @@ export default function Page({postsData}){
         </div>
         
     </div> 
-        
+    <p class="text-center "> Also check out</p>
+    <div class=" grid grid-cols-2   sm:grid-cols-1 lg:grid-cols-2 m-2   sm:gap-4 justify-center   space-x-4 space-y-4 ">
+
+      {relatedPosts.map((post)=> {
+                
+                return <CardRectangle key={post._id} title={post.title} body = {post.text} tag= {post.tag} nameLink = {post.nameLink} imageSrc= {post.cardimage} cardimagealt = {post.cardimagealt} id = {post._id} />
+            
+            })}
        
+      </div>
         </div>
         </Root>
     );

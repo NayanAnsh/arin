@@ -5,7 +5,7 @@ export default function Document() {
     <Html lang="en">
       
         <Head>
-        
+        <meta name="facebook-domain-verification" content="h9m06nillp2dgf8z5vk8q8n58xlhcs" />
 
         </Head>
       <body>

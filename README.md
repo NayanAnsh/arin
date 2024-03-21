@@ -12,14 +12,17 @@
       <li><strong>Next.js for Speed:</strong> Say goodbye to sluggish load times. With Next.js, Arin prioritizes speed, offering users an exceptional browsing experience.</li>
       <li><strong>Full CRUD Support:</strong> Enjoy complete control. Arin enables effortless content creation, editing, and deletion.</li>
       <li><strong>Customized Blog Links:</strong> Tailor your blog URLs for a personalized touch and enhanced SEO performance.</li>
-      <li><strong>Image Alt Tag & Cloudinary Integration:</strong> Optimize your visuals for accessibility and SEO. Arin seamlessly integrates with Cloudinary and Next.js Image for efficient image optimization and management.
-      ![image](https://github.com/NayanAnsh/arin/assets/25224837/aa1f0270-16ac-4427-b463-c291b89c5963)
-      </li>
+      <li><strong>Image Alt Tag & Cloudinary Integration:</strong> Optimize your visuals for accessibility and SEO. Arin seamlessly integrates with Cloudinary and Next.js Image for efficient image optimization and management.</li>
+    
+![image](https://github.com/NayanAnsh/arin/assets/25224837/aa1f0270-16ac-4427-b463-c291b89c5963)
       <li><strong>Meta Tag Mastery:</strong> Each page is equipped with its own meticulously crafted meta tags, ensuring maximum visibility and search engine visibility.</li>
       <li><strong>Open Graph Integration:</strong> Share your content effortlessly across social platforms with enhanced Open Graph integration.</li>
       <li><strong>Optimized for All Screens:</strong> Whether it's a desktop, tablet, or mobile, Arin adapts flawlessly to all screen sizes for a consistent and delightful user experience.</li>
     </ul>
 <h2>Snaps ✨✨ </h2>
+
+
+
 ![image](https://github.com/NayanAnsh/arin/assets/25224837/2a233d52-b14c-4066-ba10-856ea3c2d413)
 
 

@@ -17,9 +17,20 @@
       <li><strong>Open Graph Integration:</strong> Share your content effortlessly across social platforms with enhanced Open Graph integration.</li>
       <li><strong>Optimized for All Screens:</strong> Whether it's a desktop, tablet, or mobile, Arin adapts flawlessly to all screen sizes for a consistent and delightful user experience.</li>
     </ul>
+    
+![image](https://github.com/NayanAnsh/arin/assets/25224837/2a233d52-b14c-4066-ba10-856ea3c2d413)
+
+![image](https://github.com/NayanAnsh/arin/assets/25224837/aa1f0270-16ac-4427-b463-c291b89c5963)
+
+![image](https://github.com/NayanAnsh/arin/assets/25224837/af64a34e-6237-49ee-8ced-6cf07f693c3c)
+
 
 
 ### ✨ [Demo](https://aarin.netlify.app/)
+
+
+
+
 
 ## Install
 
@@ -28,9 +39,15 @@ npm install
 ```
 
 ## Usage
-
+In backend folder
 ```sh
+npm run build-socket-io
 npm start
+```
+
+In Frontend folder
+```sh
+npm run start
 ```
 
 ## Author
